@@ -7,18 +7,12 @@ def main(args):
     def decor(func):
         def wrap(b):
             d = b[1]**2 - 4*b[0]*b[2]
-            if d < 0: 
-                print('Уравнение не имеет решений')
-                return
-            else:
-                res = func(b)
-            return res
+            return func(b,d) if d >= 0 else 'Уравнение не имеет решений'
         return wrap
 
     @decor
-    def result(b):
-        d = math.sqrt(b[1]**2 - 4*b[0]*b[2])
-        return (-b[1]+d)/2*b[0], (-b[1]-d)/2*b[0]
+    def result(b,d):
+        return (-b[1]+math.sqrt(d))/2*b[0], (-b[1]-math.sqrt(d))/2*b[0]
     
     print(result(b))
 
