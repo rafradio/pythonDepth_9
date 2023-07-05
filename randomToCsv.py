@@ -5,6 +5,7 @@ from ClassForPrint import ClassForPrint as PrintMeth
 def main(args):
     myMeth = PrintMeth()
     decorVariable = myMeth.dumpToCsv
+    
     rows = int(args[1]) if len(args) > 1 else 400
 
     def createData(num: int = 200):
