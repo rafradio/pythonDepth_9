@@ -13,7 +13,7 @@ def main():
                 try:
                     b = list(map(int, next(x)))
                     d = b[2]**2 - 4*b[1]*b[3]
-                    res = ((-b[2]+math.sqrt(d))/2*b[1], (-b[2]-math.sqrt(d))/2*b[1]) if d >= 0 else 'Уравнение не имеет решений'
+                    res = (round((-b[2]+math.sqrt(d))/2*b[1], 2), round((-b[2]-math.sqrt(d))/2*b[1], 2)) if d >= 0 else 'Уравнение не имеет решений'
                     result[b[0]] = res
                 except StopIteration:
                     break
