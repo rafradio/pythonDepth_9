@@ -1,10 +1,11 @@
-import random
+import sys, random
 from functools import wraps
 from ClassForPrint import ClassForPrint as PrintMeth
 
-def main():
+def main(args):
     myMeth = PrintMeth()
     decorVariable = myMeth.dumpToCsv
+    rows = int(args[1]) if len(args) > 1 else 400
 
     def createData(num: int = 200):
         def deco(func):
@@ -20,11 +21,11 @@ def main():
         return deco
 
     @decorVariable
-    @createData(300)
+    @createData(rows)
     def randomFunc(*args):
         return [random.randint(args[0], args[1]) for _ in range(args[2])]
 
     randomFunc(1, 100, 3)
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv)
