@@ -10,10 +10,10 @@ class ClassForPrint:
         
         def wrapNew(*args):
             print(func.__name__)
-            csv_data = func(*args)
+            # csv_data = func(*args)
             with open(self.PATH_TO_FILE, 'w', newline='', encoding='utf-8') as f_write:
                 writer = csv.writer(f_write, dialect='excel', quotechar='"', quoting=csv.QUOTE_ALL)
-                writer.writerows(csv_data)
-            return csv_data
+                writer.writerows(func(*args))
+            # return csv_data
             
         return wrapNew
