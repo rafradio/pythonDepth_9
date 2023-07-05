@@ -12,9 +12,7 @@ def main(args):
             @wraps(func)
             def wrap(*args):
                 print("2: ", func.__name__)
-                data = [["id", "FirstRand", "SecondRand", "ThirdRand"]]
-                for i in range(num):
-                    data.append([i] + func(*args))
+                data = [["id", "FirstRand", "SecondRand", "ThirdRand"]] + [[i] + func(*args)  for i in range(num)]
                 return data
             return wrap
 
