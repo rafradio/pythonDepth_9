@@ -1,10 +1,11 @@
 import os
-import csv
+import csv, json
 
 class ClassForPrint:
     
     def __init__(self):
         self.PATH_TO_FILE = os.path.join(os.getcwd(), 'DumpedFiles', 'data.csv')
+        self.PATH_TO_JSON = os.path.join(os.getcwd(), 'DumpedFiles', 'data.json')
 
     def dumpToCsv(self, func):
         
@@ -16,4 +17,12 @@ class ClassForPrint:
                 writer.writerows(func(*args))
             # return csv_data
             
+        return wrapNew
+    
+    def dumpToJSON(self, func):
+        def wrapNew():
+            with open(self.PATH_TO_JSON, 'w', encoding='utf-8') as f:
+                print(json.dumps(func(), indent=4, ensure_ascii=False), file=f)
+            return
+        
         return wrapNew
